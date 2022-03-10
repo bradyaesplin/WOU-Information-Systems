@@ -1,0 +1,200 @@
+<html>
+<head><!--??DEBUG set table/td border to visualize layout -->
+<style> 
+XXXtable      { border: 1px solid red; }
+td         { XXXborder: 1px solid blue; }
+h1, h2     { text-align:bottom; font-family:sans-serif; XXXmargin-top:0; margin-bottom:-0.5em; padding-bottom:0; }
+h3         { text-align:bottom; font-family:sans-serif; XXXmargin-top:0; margin-bottom:0; padding-bottom:0; }
+body       { font-family:sans-serif }
+textarea   { font-family:monospace; }
+</style>
+<title>EARe Studio</title>
+</head>
+<body>
+<h1>EARe Studio</h1>
+<h3>Information Systems Design: Visualize, Validate, Verify</h3>
+<br/>
+<!-- 
+  EAReStore FOCUS:    Registration System Update
+  EAReStore VERSION:  220303000559 (2022.03.03 00:05)
+  EAReStore BASED ON: 220302235143 (2022.03.02 23:51)
+-->
+<table>
+<tr valign="TOP"><td>
+<table>
+<table><tr valign="BOTTOM"><td>
+<td>
+<tr><td colspan="2">
+<form action="http://52.39.17.151/cgi-bin/earest.cgi" method="post">
+<input type="hidden" name="eare"           value="### ACTIVITY: Vision and Scope Document
+#
+Registration System Update: -The purpose and intent of Registration System Update 1.1.0 is to modernize the current and existing registration system used by Western Oregon University with features that would be beneficial to students, staff, and faculty. The finished product will produce a streamlined experience making registration straightforward and efficient, reducing the need for unnecessary steps in the process, and enhancing convenience and ease of use for students, staff, and faculty.
+
+### ACTIVITY: User Classes
+#
+Student() -Customer who registers for and takes classes
+Advisor() -Employee who assists student in registering for classes
+Professor/Faculty() -Employee who teaches classes
+Registrar() -Employee who inputs information into registration system and collects registration data from it
+College Administrator() -Employee who uses the data collected by the registration system to advise the direction of college business decisions
+Finance Department() -Employee who uses the data collected by the registration system to bill customers 
+FinanceDepartment() -Employee who uses the data collected by the registration system to bill customers 
+
+### ACTIVITY: Use Cases
+#
+Student (Request&gt;&gt;Override, Search&gt;&gt;Classes, Add&gt;&gt;Classes, Bookmark&gt;&gt;Classes, Register&gt;&gt;Classes)
+  Request&gt;&gt;Override() -Requests override from professor
+  Search&gt;&gt;Classes() -Searches class database by some parameter
+  Add&gt;&gt;Classes() -Selects class from search and adds class to cart
+  Bookmark&gt;&gt;Classes() -Selects class from search and adds to bookmark list
+  Register&gt;&gt;Classes() -Selects option to register for classes from cart
+
+### ACTIVITY: Context and Ecosystem with Interaction Data
+#
+### Context Interactions:
+Student(Query_Classes&gt;&gt;*, Add_Class_to_Cart&gt;&gt;*, Add_Class_to_Bookmarks&gt;&gt;*, Add_Class_to_Interest_List&gt;&gt;*) 
+*(Register_Class&gt;&gt;Student, Supply_Class_Data&gt;&gt;Student)
+#
+Advisor(Query_Classes&gt;&gt;*, Add_Class_for_Student&gt;&gt;*)
+*(Supply_Class_Data&gt;&gt;Advisor)
+#
+Faculty(Preapprove_Prerequisite_Overrides&gt;&gt;*, Approve_Manual_Override&gt;&gt;*, OverrideRequestOutcome:GMAIL_API, Decline_Manual_Override&gt;&gt;*, OverrideRequestOutcome:GMAIL_API, Edit_Faculty_Contact_Info&gt;&gt;*)
+*(Communicate_Manual_Override_Request&gt;&gt;Faculty, PrerequisiteOverrideRequest:GMAIL_API)
+ PrerequisiteOverrideRequest(RequestID!, StudentID!, CourseNumber!, RequestDate!, MissingPrerequisites!, AdditionalRequestInformation?, RequestedCourse!) -Request for an override of the prerequisite requirements for a specific class
+  OverrideRequestOutcome(RequestID!, StudentID!, CourseNumber!, Professor!, RequestDate!, OutcomeOfRequest!, AdditionalRequestInformation?, RequestedCourse!) -The information the system will send to the student regarding their prerequisite override request
+ GMAIL_API() -Application Programming Interface that the system uses to communicate information through GMail
+#
+Registrar(Poll_Interest_Lists&gt;&gt;*, Poll_Registration_Database&gt;&gt;*)
+*(Supply_Interest_Data&gt;&gt;Registrar, Supply_Registration_Data&gt;&gt;Registrar)
+#
+ClassDatabase(Supply_Class_Data&gt;&gt;*)
+*(Poll_Class_Data&gt;&gt;ClassDatabase)
+#
+FinanceDepartment(Poll_Billing_Data&gt;&gt;*)
+*(Supply_Billing_Data&gt;&gt;FinanceDepartment, FinancialHoldStatusCheck:FINANCE_DEPARTMENT_SOFTWARE_1_API)
+ FinancialHoldStatusCheck(CheckID!, StudentID!, RegisteredCourses!, StudentBalance!, Date!, RegisteredCourses!) -Information sent from the system to financial system 1 to determine whether or not a hold is required
+FINANCE_DEPARTMENT_SOFTWARE_1_API() - Application Programming Interface that the system uses to communicate with Finance Department Software 1
+#
+#
+### Ecosystem Interactions:
+#
+DegreeTracks(&gt;&gt;*)
+*(&gt;&gt;DegreeTracks)
+  DegreeTracks() -Degree requirements tracking software utilized by WOU
+#
+*(&gt;&gt;FinanceDepartmentSoftware1)
+  FinanceDepartmentSoftware1() -Software used to make billing data for student
+#
+*(&gt;&gt;BookstoreOrderingSystem1)
+  BookstoreOrderingSystem1() -Software used to order class materials
+#
+FacultyDatabase1(&gt;&gt;*)
+  FacultyDatabase1() -Contains contact information and bio for Faculty
+"/>           <!-- HTML-encoded -->
+<input type="hidden" name="xml"            value=""/>            <!-- HTML-encoded -->
+<input type="hidden" name="src_toApply"    value="EAReStore"/>
+<input type="hidden" name="xpath"          value=""/>          <!-- HTML-encoded -->
+<input type="hidden" name="xsl_XtoApply"   value=""/>
+<input type="hidden" name="xsl"            value=""/>            <!-- HTML-encoded -->
+<input type="hidden" name="xsl_stdSpecs"   value=""/>
+<input type="hidden" name="xsl_params"     value=""/>     <!-- HTML-encoded -->
+<input type="hidden" name="xpath_results"  value=""/>  <!-- HTML-encoded -->
+<input type="hidden" name="xsl_results"    value=""/>    <!-- HTML-encoded -->
+<input type="hidden" name="showEARe"       value=""/>
+<input type="hidden" name="showXML"        value=""/>
+<input type="hidden" name="showWARN"       value=""/>
+<input type="hidden" name="showSUM"        value=""/>
+<input type="hidden" name="showUCD"        value="Show"/>
+<input type="hidden" name="showUCT"        value="Show"/>
+<input type="hidden" name="showCXD"        value=""/>
+<input type="hidden" name="cxdDir"         value="LR"/>
+<input type="hidden" name="showERD"        value="Show"/>
+<input type="hidden" name="erdDir"         value="LR"/>
+<input type="hidden" name="showData"       value="YES"/>
+<input type="hidden" name="showDD"         value="Show"/>
+<input type="hidden" name="showDT"         value="Show"/>
+<input type="hidden" name="showXPath"      value=""/>
+<input type="hidden" name="showXSL"        value=""/>
+<input type="hidden" name="showXresXPath"  value=""/>
+<input type="hidden" name="showXresCust"   value=""/>
+<input type="hidden" name="showXresStd"    value=""/>
+<input type="hidden" name="showXresAsWeb"  value=""/>
+
+<input type="hidden" name="earestoreVersion"  value="220303000559 (2022.03.03 00:05)"/>
+<input type="hidden" name="earestoreBasedOn"  value="220302235143 (2022.03.02 23:51)"/>
+
+<h3>EARe Preview</h3>
+<textarea readonly spellcheck="false" name="eare" cols="100" rows="41" required>### ACTIVITY: Vision and Scope Document
+#
+Registration System Update: -The purpose and intent of Registration System Update 1.1.0 is to modernize the current and existing registration system used by Western Oregon University with features that would be beneficial to students, staff, and faculty. The finished product will produce a streamlined experience making registration straightforward and efficient, reducing the need for unnecessary steps in the process, and enhancing convenience and ease of use for students, staff, and faculty.
+
+### ACTIVITY: User Classes
+#
+Student() -Customer who registers for and takes classes
+Advisor() -Employee who assists student in registering for classes
+Professor/Faculty() -Employee who teaches classes
+Registrar() -Employee who inputs information into registration system and collects registration data from it
+College Administrator() -Employee who uses the data collected by the registration system to advise the direction of college business decisions
+Finance Department() -Employee who uses the data collected by the registration system to bill customers 
+FinanceDepartment() -Employee who uses the data collected by the registration system to bill customers 
+
+### ACTIVITY: Use Cases
+#
+Student (Request>>Override, Search>>Classes, Add>>Classes, Bookmark>>Classes, Register>>Classes)
+  Request>>Override() -Requests override from professor
+  Search>>Classes() -Searches class database by some parameter
+  Add>>Classes() -Selects class from search and adds class to cart
+  Bookmark>>Classes() -Selects class from search and adds to bookmark list
+  Register>>Classes() -Selects option to register for classes from cart
+
+### ACTIVITY: Context and Ecosystem with Interaction Data
+#
+### Context Interactions:
+Student(Query_Classes>>*, Add_Class_to_Cart>>*, Add_Class_to_Bookmarks>>*, Add_Class_to_Interest_List>>*) 
+*(Register_Class>>Student, Supply_Class_Data>>Student)
+#
+Advisor(Query_Classes>>*, Add_Class_for_Student>>*)
+*(Supply_Class_Data>>Advisor)
+#
+Faculty(Preapprove_Prerequisite_Overrides>>*, Approve_Manual_Override>>*, OverrideRequestOutcome:GMAIL_API, Decline_Manual_Override>>*, OverrideRequestOutcome:GMAIL_API, Edit_Faculty_Contact_Info>>*)
+*(Communicate_Manual_Override_Request>>Faculty, PrerequisiteOverrideRequest:GMAIL_API)
+ PrerequisiteOverrideRequest(RequestID!, StudentID!, CourseNumber!, RequestDate!, MissingPrerequisites!, AdditionalRequestInformation?, RequestedCourse!) -Request for an override of the prerequisite requirements for a specific class
+  OverrideRequestOutcome(RequestID!, StudentID!, CourseNumber!, Professor!, RequestDate!, OutcomeOfRequest!, AdditionalRequestInformation?, RequestedCourse!) -The information the system will send to the student regarding their prerequisite override request
+ GMAIL_API() -Application Programming Interface that the system uses to communicate information through GMail
+#
+Registrar(Poll_Interest_Lists>>*, Poll_Registration_Database>>*)
+*(Supply_Interest_Data>>Registrar, Supply_Registration_Data>>Registrar)
+#
+ClassDatabase(Supply_Class_Data>>*)
+*(Poll_Class_Data>>ClassDatabase)
+#
+FinanceDepartment(Poll_Billing_Data>>*)
+*(Supply_Billing_Data>>FinanceDepartment, FinancialHoldStatusCheck:FINANCE_DEPARTMENT_SOFTWARE_1_API)
+ FinancialHoldStatusCheck(CheckID!, StudentID!, RegisteredCourses!, StudentBalance!, Date!, RegisteredCourses!) -Information sent from the system to financial system 1 to determine whether or not a hold is required
+FINANCE_DEPARTMENT_SOFTWARE_1_API() - Application Programming Interface that the system uses to communicate with Finance Department Software 1
+#
+#
+### Ecosystem Interactions:
+#
+DegreeTracks(>>*)
+*(>>DegreeTracks)
+  DegreeTracks() -Degree requirements tracking software utilized by WOU
+#
+*(>>FinanceDepartmentSoftware1)
+  FinanceDepartmentSoftware1() -Software used to make billing data for student
+#
+*(>>BookstoreOrderingSystem1)
+  BookstoreOrderingSystem1() -Software used to order class materials
+#
+FacultyDatabase1(>>*)
+  FacultyDatabase1() -Contains contact information and bio for Faculty
+</textarea>
+<b><pre>
+FOCUS:    Registration System Update
+VERSION:  220303000559 (2022.03.03 00:05)
+BASED ON: 220302235143 (2022.03.02 23:51)
+</pre></b>
+<div style="float;text-align:center">
+<button name="src_toApply" value="EAReStore" type="submit" formaction='http://52.39.17.151/cgi-bin/earest.cgi'>Apply EAReStore</button>
+</div>
+</form>

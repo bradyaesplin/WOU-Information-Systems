@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!-- 
+Created by compEARe 20220303_001220, based on EARe design...
+
+  Registration System Update:
+  Student() -Customer who registers for and takes classes
+  Advisor() -Employee who assists student in registering for classes
+  Registrar() -Employee who inputs information into registration system and collects registration data from it
+  FinanceDepartment() -Employee who uses the data collected by the registration system to bill customers
+  Student(Request>>Override, Search>>Classes, Add>>Classes, Bookmark>>Classes, Register>>Classes)
+  Student(Query_Classes>>*, Add_Class_to_Cart>>*, Add_Class_to_Bookmarks>>*, Add_Class_to_Interest_List>>*)
+  Advisor(Query_Classes>>*, Add_Class_for_Student>>*)
+  Faculty(Preapprove_Prerequisite_Overrides>>*, Approve_Manual_Override>>*, OverrideRequestOutcome:GMAIL_API, Decline_Manual_Override>>*, OverrideRequestOutcome:GMAIL_API, Edit_Faculty_Contact_Info>>*)
+  PrerequisiteOverrideRequest(RequestID!, StudentID!, CourseNumber!, RequestDate!, MissingPrerequisites!, AdditionalRequestInformation?, RequestedCourse!) -Request for an override of the prerequisite requirements for a specific class
+  OverrideRequestOutcome(RequestID!, StudentID!, CourseNumber!, Professor!, RequestDate!, OutcomeOfRequest!, AdditionalRequestInformation?, RequestedCourse!) -The information the system will send to the student regarding their prerequisite override request
+  GMAIL_API() -Application Programming Interface that the system uses to communicate information through GMail
+  Registrar(Poll_Interest_Lists>>*, Poll_Registration_Database>>*)
+  ClassDatabase(Supply_Class_Data>>*)
+  FinanceDepartment(Poll_Billing_Data>>*)
+  FinancialHoldStatusCheck(CheckID!, StudentID!, RegisteredCourses!, StudentBalance!, Date!, RegisteredCourses!) -Information sent from the system to financial system 1 to determine whether or not a hold is required
+  FINANCE_DEPARTMENT_SOFTWARE_1_API() - Application Programming Interface that the system uses to communicate with Finance Department Software 1
+  DegreeTracks(>>*)
+  DegreeTracks() -Degree requirements tracking software utilized by WOU
+  FinanceDepartmentSoftware1() -Software used to make billing data for student
+  BookstoreOrderingSystem1() -Software used to order class materials
+  FacultyDatabase1(>>*)
+  FacultyDatabase1() -Contains contact information and bio for Faculty
+-->
+<eare>
+<focus>Registration System Update</focus>
+<notes>The purpose and intent of Registration System Update 1.1.0 is to modernize the current and existing registration system used by Western Oregon University with features that would be beneficial to students, staff, and faculty. The finished product will produce a streamlined experience making registration straightforward and efficient, reducing the need for unnecessary steps in the process, and enhancing convenience and ease of use for students, staff, and faculty.</notes>
+<eareDesign>
+<entities>
+<entity name="Student" isActor="YES">
+  <rules>Customer who registers for and takes classes</rules>
+</entity>
+<entity name="Advisor" isActor="YES">
+  <rules>Employee who assists student in registering for classes</rules>
+</entity>
+<entity name="Faculty" isActor="YES">
+  <rules>Employee who teaches classes</rules>
+</entity>
+<entity name="Registrar" isActor="YES">
+  <rules>Employee who inputs information into registration system and collects registration data from it</rules>
+</entity>
+<entity name="College Administrator" isActor="YES">
+  <rules>Employee who uses the data collected by the registration system to advise the direction of college business decisions</rules>
+</entity>
+<entity name="Finance Department" isActor="YES">
+  <rules>Employee who uses the data collected by the registration system to bill customers</rules>
+</entity>
+<entity name="FinanceDepartment" isActor="YES">
+  <rules>Employee who uses the data collected by the registration system to bill customers</rules>
+</entity>
+<entity name="Student" isActor="YES">
+  <attribute name="Override" type="REF" relationship="Request"></attribute>
+  <attribute name="Classes" type="REF" relationship="Search"></attribute>
+  <attribute name="Classes" type="REF" relationship="Add"></attribute>
+  <attribute name="Classes" type="REF" relationship="Bookmark"></attribute>
+  <attribute name="Classes" type="REF" relationship="Register"></attribute>
+</entity>
+<entity name="Override" isAction="YES" relationship="Request">
+  <rules>Requests override from professor</rules>
+</entity>
+<entity name="Classes" isAction="YES" relationship="Search">
+  <rules>Searches class database by some parameter</rules>
+</entity>
+<entity name="Classes" isAction="YES" relationship="Add">
+  <rules>Selects class from search and adds class to cart</rules>
+</entity>
+<entity name="Classes" isAction="YES" relationship="Bookmark">
+  <rules>Selects class from search and adds to bookmark list</rules>
+</entity>
+<entity name="Classes" isAction="YES" relationship="Register">
+  <rules>Selects option to register for classes from cart</rules>
+</entity>
+<entity name="Student" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF" relationship="Query_Classes"></attribute>
+  <attribute name="*" type="REF" relationship="Add_Class_to_Cart"></attribute>
+  <attribute name="*" type="REF" relationship="Add_Class_to_Bookmarks"></attribute>
+  <attribute name="*" type="REF" relationship="Add_Class_to_Interest_List"></attribute>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="Student" type="REF" relationship="Register_Class"></attribute>
+  <attribute name="Student" type="REF" relationship="Supply_Class_Data"></attribute>
+</entity>
+<entity name="Advisor" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF" relationship="Query_Classes"></attribute>
+  <attribute name="*" type="REF" relationship="Add_Class_for_Student"></attribute>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="Advisor" type="REF" relationship="Supply_Class_Data"></attribute>
+</entity>
+<entity name="Faculty" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF" relationship="Preapprove_Prerequisite_Overrides"></attribute>
+  <attribute name="*" type="REF" relationship="Approve_Manual_Override"></attribute>
+  <attribute name="OverrideRequestOutcome" type="GMAIL_API"></attribute>
+  <attribute name="*" type="REF" relationship="Decline_Manual_Override"></attribute>
+  <attribute name="OverrideRequestOutcome" type="GMAIL_API"></attribute>
+  <attribute name="*" type="REF" relationship="Edit_Faculty_Contact_Info"></attribute>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="Faculty" type="REF" relationship="Communicate_Manual_Override_Request"></attribute>
+  <attribute name="PrerequisiteOverrideRequest" type="GMAIL_API"></attribute>
+</entity>
+<entity name="PrerequisiteOverrideRequest">
+  <attribute name="RequestID" min="1" max="1"></attribute>
+  <attribute name="StudentID" min="1" max="1"></attribute>
+  <attribute name="CourseNumber" min="1" max="1"></attribute>
+  <attribute name="RequestDate" min="1" max="1"></attribute>
+  <attribute name="MissingPrerequisites" min="1" max="1"></attribute>
+  <attribute name="AdditionalRequestInformation" min="0" max="1"></attribute>
+  <attribute name="RequestedCourse" min="1" max="1"></attribute>
+  <rules>Request for an override of the prerequisite requirements for a specific class</rules>
+</entity>
+<entity name="OverrideRequestOutcome">
+  <attribute name="RequestID" min="1" max="1"></attribute>
+  <attribute name="StudentID" min="1" max="1"></attribute>
+  <attribute name="CourseNumber" min="1" max="1"></attribute>
+  <attribute name="Professor" min="1" max="1"></attribute>
+  <attribute name="RequestDate" min="1" max="1"></attribute>
+  <attribute name="OutcomeOfRequest" min="1" max="1"></attribute>
+  <attribute name="AdditionalRequestInformation" min="0" max="1"></attribute>
+  <attribute name="RequestedCourse" min="1" max="1"></attribute>
+  <rules>The information the system will send to the student regarding their prerequisite override request</rules>
+</entity>
+<entity name="GMAIL_API" isActor="YES">
+  <rules>Application Programming Interface that the system uses to communicate information through GMail</rules>
+</entity>
+<entity name="Registrar" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF" relationship="Poll_Interest_Lists"></attribute>
+  <attribute name="*" type="REF" relationship="Poll_Registration_Database"></attribute>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="Registrar" type="REF" relationship="Supply_Interest_Data"></attribute>
+  <attribute name="Registrar" type="REF" relationship="Supply_Registration_Data"></attribute>
+</entity>
+<entity name="ClassDatabase" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF" relationship="Supply_Class_Data"></attribute>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="ClassDatabase" type="REF" relationship="Poll_Class_Data"></attribute>
+</entity>
+<entity name="FinanceDepartment" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF" relationship="Poll_Billing_Data"></attribute>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="FinanceDepartment" type="REF" relationship="Supply_Billing_Data"></attribute>
+  <attribute name="FinancialHoldStatusCheck" type="FINANCE_DEPARTMENT_SOFTWARE_1_API"></attribute>
+</entity>
+<entity name="FinancialHoldStatusCheck">
+  <attribute name="CheckID" min="1" max="1"></attribute>
+  <attribute name="StudentID" min="1" max="1"></attribute>
+  <attribute name="RegisteredCourses" min="1" max="1"></attribute>
+  <attribute name="StudentBalance" min="1" max="1"></attribute>
+  <attribute name="Date" min="1" max="1"></attribute>
+  <attribute name="RegisteredCourses" min="1" max="1"></attribute>
+  <rules>Information sent from the system to financial system 1 to determine whether or not a hold is required</rules>
+</entity>
+<entity name="FINANCE_DEPARTMENT_SOFTWARE_1_API" isActor="YES">
+  <rules>Application Programming Interface that the system uses to communicate with Finance Department Software 1</rules>
+</entity>
+<entity name="DegreeTracks" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF"></attribute>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="DegreeTracks" type="REF"></attribute>
+</entity>
+<entity name="DegreeTracks" isActor="YES">
+  <rules>Degree requirements tracking software utilized by WOU</rules>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="FinanceDepartmentSoftware1" type="REF"></attribute>
+</entity>
+<entity name="FinanceDepartmentSoftware1" isActor="YES">
+  <rules>Software used to make billing data for student</rules>
+</entity>
+<entity name="*" isActor="YES" outFocus="YES">
+  <attribute name="BookstoreOrderingSystem1" type="REF"></attribute>
+</entity>
+<entity name="BookstoreOrderingSystem1" isActor="YES">
+  <rules>Software used to order class materials</rules>
+</entity>
+<entity name="FacultyDatabase1" isActor="YES" outFocus="YES">
+  <attribute name="*" type="REF"></attribute>
+</entity>
+<entity name="FacultyDatabase1" isActor="YES">
+  <rules>Contains contact information and bio for Faculty</rules>
+</entity>
+</entities>
+</eareDesign>
+<!-- ========== -->
+<eareData>
+<data>
+</data>
+</eareData>
+</eare>

@@ -1,0 +1,65 @@
+### ACTIVITY: Vision and Scope Document
+#
+Registration System Update: -The purpose and intent of Registration System Update 1.1.0 is to modernize the current and existing registration system used by Western Oregon University with features that would be beneficial to students, staff, and faculty. The finished product will produce a streamlined experience making registration straightforward and efficient, reducing the need for unnecessary steps in the process, and enhancing convenience and ease of use for students, staff, and faculty.
+
+### ACTIVITY: User Classes
+#
+Student() -Customer who registers for and takes classes
+Advisor() -Employee who assists student in registering for classes
+Professor/Faculty() -Employee who teaches classes
+Registrar() -Employee who inputs information into registration system and collects registration data from it
+College Administrator() -Employee who uses the data collected by the registration system to advise the direction of college business decisions
+Finance Department() -Employee who uses the data collected by the registration system to bill customers 
+FinanceDepartment() -Employee who uses the data collected by the registration system to bill customers 
+
+### ACTIVITY: Use Cases
+#
+Student (Request>>Override, Search>>Classes, Add>>Classes, Bookmark>>Classes, Register>>Classes)
+  Request>>Override() -Requests override from professor
+  Search>>Classes() -Searches class database by some parameter
+  Add>>Classes() -Selects class from search and adds class to cart
+  Bookmark>>Classes() -Selects class from search and adds to bookmark list
+  Register>>Classes() -Selects option to register for classes from cart
+
+### ACTIVITY: Context and Ecosystem with Interaction Data
+#
+### Context Interactions:
+Student(Query_Classes>>*, Add_Class_to_Cart>>*, Add_Class_to_Bookmarks>>*, Add_Class_to_Interest_List>>*) 
+*(Register_Class>>Student, Supply_Class_Data>>Student)
+#
+Advisor(Query_Classes>>*, Add_Class_for_Student>>*)
+*(Supply_Class_Data>>Advisor)
+#
+Faculty(Preapprove_Prerequisite_Overrides>>*, Approve_Manual_Override>>*, OverrideRequestOutcome:GMAIL_API, Decline_Manual_Override>>*, OverrideRequestOutcome:GMAIL_API, Edit_Faculty_Contact_Info>>*)
+*(Communicate_Manual_Override_Request>>Faculty, PrerequisiteOverrideRequest:GMAIL_API)
+ PrerequisiteOverrideRequest(RequestID!, StudentID!, CourseNumber!, RequestDate!, MissingPrerequisites!, AdditionalRequestInformation?, RequestedCourse!) -Request for an override of the prerequisite requirements for a specific class
+  OverrideRequestOutcome(RequestID!, StudentID!, CourseNumber!, Professor!, RequestDate!, OutcomeOfRequest!, AdditionalRequestInformation?, RequestedCourse!) -The information the system will send to the student regarding their prerequisite override request
+ GMAIL_API() -Application Programming Interface that the system uses to communicate information through GMail
+#
+Registrar(Poll_Interest_Lists>>*, Poll_Registration_Database>>*)
+*(Supply_Interest_Data>>Registrar, Supply_Registration_Data>>Registrar)
+#
+ClassDatabase(Supply_Class_Data>>*)
+*(Poll_Class_Data>>ClassDatabase)
+#
+FinanceDepartment(Poll_Billing_Data>>*)
+*(Supply_Billing_Data>>FinanceDepartment, FinancialHoldStatusCheck:FINANCE_DEPARTMENT_SOFTWARE_1_API)
+ FinancialHoldStatusCheck(CheckID!, StudentID!, RegisteredCourses!, StudentBalance!, Date!, RegisteredCourses!) -Information sent from the system to financial system 1 to determine whether or not a hold is required
+FINANCE_DEPARTMENT_SOFTWARE_1_API() - Application Programming Interface that the system uses to communicate with Finance Department Software 1
+#
+#
+### Ecosystem Interactions:
+#
+DegreeTracks(>>*)
+*(>>DegreeTracks)
+  DegreeTracks() -Degree requirements tracking software utilized by WOU
+#
+*(>>FinanceDepartmentSoftware1)
+  FinanceDepartmentSoftware1() -Software used to make billing data for student
+#
+*(>>BookstoreOrderingSystem1)
+  BookstoreOrderingSystem1() -Software used to order class materials
+#
+FacultyDatabase1(>>*)
+  FacultyDatabase1() -Contains contact information and bio for Faculty
+

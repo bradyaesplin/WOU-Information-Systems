@@ -1,0 +1,327 @@
+<h3>Registration System Update</h3>
+<tt>220302235143</tt>
+<h3>External Interaction Data:</h3><table border="1">
+  <tr>
+    <th>Data Entity</th>
+    <th>Data Attributes</th>
+    <th>Usage</th>
+    <th>Description</th>
+  </tr>
+  <tr valign="top">
+    <td>
+      <table width="100%">
+        <tr>
+          <td>FinancialHoldStatusCheck</td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;&nbsp;<em><font size="-1">via<font></em>&nbsp;FINANCE_DEPARTMENT_SOFTWARE_1_API</td>
+        </tr>
+      </table>
+    </td>
+    <td>CheckID&nbsp;&nbsp;(1)<br/>StudentID&nbsp;&nbsp;(1)<br/>RegisteredCourses&nbsp;&nbsp;(1)<br/>StudentBalance&nbsp;&nbsp;(1)<br/>Date&nbsp;&nbsp;(1)<br/>RegisteredCourses&nbsp;&nbsp;(1)</td>
+    <td>
+      <table width="100%" border="0">
+        <tr>
+          <td width="25%" align="left"><font size="-2">FOCUS</font>:  </td>
+          <td width="50%" align="left">Supply_Billing_Data  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left">FinanceDepartment</td>
+        </tr>
+      </table>
+    </td>
+    <td>Information sent from the system to financial system 1 to determine whether or not a hold is required</td>
+  </tr>
+  <tr valign="top">
+    <td>
+      <table width="100%">
+        <tr>
+          <td>OverrideRequestOutcome</td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;&nbsp;<em><font size="-1">via<font></em>&nbsp;GMAIL_API</td>
+        </tr>
+      </table>
+    </td>
+    <td>RequestID&nbsp;&nbsp;(1)<br/>StudentID&nbsp;&nbsp;(1)<br/>CourseNumber&nbsp;&nbsp;(1)<br/>Professor&nbsp;&nbsp;(1)<br/>RequestDate&nbsp;&nbsp;(1)<br/>OutcomeOfRequest&nbsp;&nbsp;(1)<br/>AdditionalRequestInformation&nbsp;&nbsp;(0/1)<br/>RequestedCourse&nbsp;&nbsp;(1)</td>
+    <td>
+      <table width="100%" border="0">
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Preapprove_Prerequisite_Overrides  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Approve_Manual_Override  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Decline_Manual_Override  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Edit_Faculty_Contact_Info  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Preapprove_Prerequisite_Overrides  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Approve_Manual_Override  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Decline_Manual_Override  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+        <tr>
+          <td width="25%" align="left">Faculty:  </td>
+          <td width="50%" align="left">Edit_Faculty_Contact_Info  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left"><font size="-2">FOCUS</font></td>
+        </tr>
+      </table>
+    </td>
+    <td>The information the system will send to the student regarding their prerequisite override request</td>
+  </tr>
+  <tr valign="top">
+    <td>
+      <table width="100%">
+        <tr>
+          <td>PrerequisiteOverrideRequest</td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;&nbsp;<em><font size="-1">via<font></em>&nbsp;GMAIL_API</td>
+        </tr>
+      </table>
+    </td>
+    <td>RequestID&nbsp;&nbsp;(1)<br/>StudentID&nbsp;&nbsp;(1)<br/>CourseNumber&nbsp;&nbsp;(1)<br/>RequestDate&nbsp;&nbsp;(1)<br/>MissingPrerequisites&nbsp;&nbsp;(1)<br/>AdditionalRequestInformation&nbsp;&nbsp;(0/1)<br/>RequestedCourse&nbsp;&nbsp;(1)</td>
+    <td>
+      <table width="100%" border="0">
+        <tr>
+          <td width="25%" align="left"><font size="-2">FOCUS</font>:  </td>
+          <td width="50%" align="left">Communicate_Manual_Override_Request  <em><font size="-1">to/for<font></em>:  </td>
+          <td width="25%" align="left">Faculty</td>
+        </tr>
+      </table>
+    </td>
+    <td>Request for an override of the prerequisite requirements for a specific class</td>
+  </tr>
+</table><h3>FinancialHoldStatusCheck:</h3><li/>Information sent from the system to financial system 1 to determine whether or not a hold is required<table border="1">
+  <tr>
+    <th>Attribute</th>
+    <th>Data Type</th>
+    <th>Cardinality</th>
+    <th>Usage</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>CheckID</td>
+    <td/>
+    <td align="center">1</td>
+    <td>FinancialHoldStatusCheck <em>has</em> <em>a required </em> CheckID</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>StudentID</td>
+    <td/>
+    <td align="center">1</td>
+    <td>FinancialHoldStatusCheck <em>has</em> <em>a required </em> StudentID</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>RegisteredCourses</td>
+    <td/>
+    <td align="center">1</td>
+    <td>FinancialHoldStatusCheck <em>has</em> <em>a required </em> RegisteredCourses</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>StudentBalance</td>
+    <td/>
+    <td align="center">1</td>
+    <td>FinancialHoldStatusCheck <em>has</em> <em>a required </em> StudentBalance</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>Date</td>
+    <td/>
+    <td align="center">1</td>
+    <td>FinancialHoldStatusCheck <em>has</em> <em>a required </em> Date</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>RegisteredCourses</td>
+    <td/>
+    <td align="center">1</td>
+    <td>FinancialHoldStatusCheck <em>has</em> <em>a required </em> RegisteredCourses</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+</table><h3>OverrideRequestOutcome:</h3><li/>The information the system will send to the student regarding their prerequisite override request<table border="1">
+  <tr>
+    <th>Attribute</th>
+    <th>Data Type</th>
+    <th>Cardinality</th>
+    <th>Usage</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>RequestID</td>
+    <td/>
+    <td align="center">1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>a required </em> RequestID</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>StudentID</td>
+    <td/>
+    <td align="center">1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>a required </em> StudentID</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>CourseNumber</td>
+    <td/>
+    <td align="center">1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>a required </em> CourseNumber</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>Professor</td>
+    <td/>
+    <td align="center">1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>a required </em> Professor</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>RequestDate</td>
+    <td/>
+    <td align="center">1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>a required </em> RequestDate</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>OutcomeOfRequest</td>
+    <td/>
+    <td align="center">1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>a required </em> OutcomeOfRequest</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>AdditionalRequestInformation</td>
+    <td/>
+    <td align="center">0/1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>an optional </em> AdditionalRequestInformation</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>RequestedCourse</td>
+    <td/>
+    <td align="center">1</td>
+    <td>OverrideRequestOutcome <em>has</em> <em>a required </em> RequestedCourse</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+</table><h3>PrerequisiteOverrideRequest:</h3><li/>Request for an override of the prerequisite requirements for a specific class<table border="1">
+  <tr>
+    <th>Attribute</th>
+    <th>Data Type</th>
+    <th>Cardinality</th>
+    <th>Usage</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>RequestID</td>
+    <td/>
+    <td align="center">1</td>
+    <td>PrerequisiteOverrideRequest <em>has</em> <em>a required </em> RequestID</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>StudentID</td>
+    <td/>
+    <td align="center">1</td>
+    <td>PrerequisiteOverrideRequest <em>has</em> <em>a required </em> StudentID</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>CourseNumber</td>
+    <td/>
+    <td align="center">1</td>
+    <td>PrerequisiteOverrideRequest <em>has</em> <em>a required </em> CourseNumber</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>RequestDate</td>
+    <td/>
+    <td align="center">1</td>
+    <td>PrerequisiteOverrideRequest <em>has</em> <em>a required </em> RequestDate</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>MissingPrerequisites</td>
+    <td/>
+    <td align="center">1</td>
+    <td>PrerequisiteOverrideRequest <em>has</em> <em>a required </em> MissingPrerequisites</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>AdditionalRequestInformation</td>
+    <td/>
+    <td align="center">0/1</td>
+    <td>PrerequisiteOverrideRequest <em>has</em> <em>an optional </em> AdditionalRequestInformation</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+  <tr>
+    <td>RequestedCourse</td>
+    <td/>
+    <td align="center">1</td>
+    <td>PrerequisiteOverrideRequest <em>has</em> <em>a required </em> RequestedCourse</td>
+    <td>
+      <tt/>
+    </td>
+  </tr>
+</table>
