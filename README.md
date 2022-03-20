@@ -16,11 +16,11 @@ This repository is a selection of projects and assignments that I have saved.
 | IS301 | Information Systems Automation | A | Unix, BASH scripting |
 | IS340 | Information Management II | A | Linux, XML, XSLT, MySQL |
 | IS485 | Introduction to Computer Security | A |  |
-| IS345 | Systems Analysis | In Progress (95.75%) |  |
-| IS486 | Network Security | In Progress (98.13%) |  |
-| IS350 | Enterprise Architecture | Future |  |
-| CS340 | Computer Ethics | Future |  |
-| IS370 | Ethical Hacking | Future |  |
+| IS345 | Systems Analysis | A |  |
+| IS486 | Network Security | A |  |
+| IS350 | Enterprise Architecture | In Progress |  |
+| CS340 | Computer Ethics | In Progresse |  |
+| IS370 | Ethical Hacking | In Progress |  |
 | CS422 | Demystifying Computer Science | Future |  |
 | CS312 | Social History of Computing | Future |  |
 | IS355 | Strategy, Aquisition & Management | Future |  |
