@@ -19,7 +19,7 @@ This repository is a selection of projects and assignments that I have saved.
 | IS345 | Systems Analysis | A |  |
 | IS486 | Network Security | A |  |
 | IS350 | Enterprise Architecture | In Progress |  |
-| CS340 | Computer Ethics | In Progresse |  |
+| CS340 | Computer Ethics | In Progress |  |
 | IS370 | Ethical Hacking | In Progress |  |
 | CS422 | Demystifying Computer Science | Future |  |
 | CS312 | Social History of Computing | Future |  |
