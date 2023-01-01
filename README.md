@@ -24,7 +24,7 @@ This repository is a selection of projects and assignments that I have saved.
 | COM430 | Social Media & Culture | A |  |
 | CS312 | Social History of Computing | A |  |
 | IS355 | Strategy, Aquisition & Management | A |  |
-| CS271 | Computer Organization | A |  |
+| CS271 | Computer Organization | A | ARMv6 Assembly |
 | IS440 | System Administration | In Progress |  |
 | IS470 | Project Management | In Progress |  |
 | IS475 | Project Implementation | Future |  |
